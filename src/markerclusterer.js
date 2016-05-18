@@ -1057,9 +1057,19 @@ ClusterIcon.prototype.triggerClusterClick = function(event) {
   }
 };
 
-ClusterIcon.prototype.triggerClusterMouseover = function(event) {};
+ClusterIcon.prototype.triggerClusterMouseover = function(event) {
+  var markerClusterer = this.cluster_.getMarkerClusterer();
 
-ClusterIcon.prototype.triggerClusterMouseout= function(event) {};
+  // Trigger the clustermouseover event.
+  google.maps.event.trigger(markerClusterer, 'clustermouseover', this.cluster_, event);
+};
+
+ClusterIcon.prototype.triggerClusterMouseout= function(event) {
+  var markerClusterer = this.cluster_.getMarkerClusterer();
+
+  // Trigger the clustermouseout event.
+  google.maps.event.trigger(markerClusterer, 'clustermouseout', this.cluster_, event);
+};
 
 
 /**
