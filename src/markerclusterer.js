@@ -1057,6 +1057,10 @@ ClusterIcon.prototype.triggerClusterClick = function(event) {
   }
 };
 
+ClusterIcon.prototype.triggerClusterMouseover = function(event) {};
+
+ClusterIcon.prototype.triggerClusterMouseout= function(event) {};
+
 
 /**
  * Adding the cluster icon to the dom.
@@ -1076,6 +1080,14 @@ ClusterIcon.prototype.onAdd = function() {
   var that = this;
   google.maps.event.addDomListener(this.div_, 'click', function(event) {
     that.triggerClusterClick(event);
+  });
+
+  google.maps.event.addDomListener(this.div_, 'mouseover', function(event) {
+    that.triggerClusterMouseover(event);
+  });
+
+  google.maps.event.addDomListener(this.div_, 'mouseout', function(event) {
+    that.triggerClusterMouseout(event);
   });
 };
 
